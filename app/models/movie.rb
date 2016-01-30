@@ -1,6 +1,9 @@
 class Movie < ActiveRecord::Base
 
-  has_attached_file :image
+  has_attached_file :image, styles: {
+      small: "90x133>",
+      thumb: "50x50>"
+    }
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
   validates :total_gross, numericality: { greater_than_or_equal_to: 0}
